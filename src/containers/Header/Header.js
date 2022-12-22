@@ -39,8 +39,6 @@ class Header extends Component {
                         <i className="fas fa-sign-out-alt"></i>
                     </div>
                 </div>
-
-                
             </div>
         );
     }
