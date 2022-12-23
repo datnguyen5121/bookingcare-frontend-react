@@ -1,35 +1,69 @@
 import actionTypes from '../actions/actionTypes';
 
 const initialState = {
+    isLoadingGender: false,
     genders: [],
     roles: [],
-    position: []
+    positions: []
 }
 
 const adminReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.FETCH_GENDER_START:
-            console.log('hoi dan it fire fetch gender start', action);
+        case actionTypes.FETCH_GENDER_START:{
+            let copyState = {...state};
+            copyState.isLoadingGender = true;
             return {
-                ...state,
-
+                ...copyState,
             }
-        case actionTypes.FETCH_GENDER_SUCCESS:
+        }
+
+        case actionTypes.FETCH_GENDER_SUCCESS:{
             let copyState = {...state};
             copyState.genders = action.data;
-            console.log('hoi dan it fire fetch gender success', copyState);
+            copyState.isLoadingGender = false;
             return {
                 ...copyState,
 
-            }
-        case actionTypes.FETCH_GENDER_FAILED:
-            console.log('hoi dan it fire fetch gender failed', action);
+            }}
+        case actionTypes.FETCH_GENDER_FAILED:{
+            let copyState = {...state};
+            copyState.isLoadingGender = false;
+            copyState.genders = [];
             return {
-                ...state,
+                ...copyState,
 
-            }
+            }}
             
        
+            case actionTypes.FETCH_POSITION_SUCCESS:{
+                let copyState = {...state};
+                copyState.positions = action.data;
+                return {
+                    ...copyState,
+    
+                }}
+            case actionTypes.FETCH_POSITION_FAILED:{
+                let copyState = {...state};
+                copyState.positions = [];
+                return {
+                    ...copyState,
+    
+                }}
+
+                case actionTypes.FETCH_ROLE_SUCCESS:{
+                    let copyState = {...state};
+                    copyState.roles = action.data;
+                    return {
+                        ...copyState,
+        
+                    }}
+                case actionTypes.FETCH_ROLE_FAILED:{
+                    let copyState = {...state};
+                    copyState.roles = [];
+                    return {
+                        ...copyState,
+        
+                    }}
         default:
             return state;
     }
