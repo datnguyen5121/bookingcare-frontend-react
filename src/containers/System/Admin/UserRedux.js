@@ -151,7 +151,20 @@ class UserRedux extends Component {
             ...copyState,
         });
     };
-
+    handleEditUserFromParent = (user) => {
+        this.setState({
+            email: user.email,
+            password: "HARDCODE",
+            firstName: user.firstName,
+            lastName: user.lastName,
+            phoneNumber: user.phonenumber,
+            address: user.address,
+            gender: user.gender,
+            position: user.positionId,
+            role: user.roleId,
+            avatar: user.image,
+        });
+    };
     render() {
         let genders = this.state.genderArr;
         let roles = this.state.roleArr;
@@ -384,7 +397,11 @@ class UserRedux extends Component {
                                 </button>
                             </div>
                             <div className="col-12 mb-5">
-                                <TableManageUser />
+                                <TableManageUser
+                                    handleEditUserFromParent={
+                                        this.handleEditUserFromParent
+                                    }
+                                />
                             </div>
                         </div>
                     </div>

@@ -24,6 +24,10 @@ class TableManageUser extends Component {
     handleDeleteUser = (user) => {
         this.props.deleteAUserRedux(user.id);
     };
+    handEditUser = (user) => {
+        console.log("dat", user);
+        this.props.handleEditUserFromParent(user);
+    };
     render() {
         console.log("hoidanit check all users: ", this.props.listUsers);
         console.log("hoidanit check state: ", this.state.usersRedux);
@@ -48,7 +52,12 @@ class TableManageUser extends Component {
                                     <td>{item.lastName}</td>
                                     <td>{item.address}</td>
                                     <td>
-                                        <button className="btn-edit">
+                                        <button
+                                            className="btn-edit"
+                                            onClick={() =>
+                                                this.handEditUser(item)
+                                            }
+                                        >
                                             <i className="fas fa-pencil-alt"></i>
                                         </button>
                                         <button
@@ -79,6 +88,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
         deleteAUserRedux: (id) => dispatch(actions.deleteAUser(id)),
+        editAUserRedux: (id) => dispatch(actions.editAUser(id)),
     };
 };
 
