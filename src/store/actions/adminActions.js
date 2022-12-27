@@ -170,10 +170,10 @@ export const deleteUserFailed = () => ({
     type: actionTypes.DELETE_USER_FAILED,
 });
 
-export const editAUser = (userId) => {
+export const editAUser = (data) => {
     return async (dispatch, getState) => {
         try {
-            let res = await editUserService(userId);
+            let res = await editUserService(data);
             if (res && res.errCode === 0) {
                 toast.success("Edit the user succeed");
                 dispatch(editUserSuccess());

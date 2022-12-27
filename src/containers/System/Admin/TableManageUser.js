@@ -54,16 +54,12 @@ class TableManageUser extends Component {
                                     <td>
                                         <button
                                             className="btn-edit"
-                                            onClick={() =>
-                                                this.handEditUser(item)
-                                            }
+                                            onClick={() => this.handEditUser(item)}
                                         >
                                             <i className="fas fa-pencil-alt"></i>
                                         </button>
                                         <button
-                                            onClick={() =>
-                                                this.handleDeleteUser(item)
-                                            }
+                                            onClick={() => this.handleDeleteUser(item)}
                                             className="btn-delete"
                                         >
                                             <i className="fas fa-trash"></i>
@@ -88,7 +84,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
         deleteAUserRedux: (id) => dispatch(actions.deleteAUser(id)),
-        editAUserRedux: (id) => dispatch(actions.editAUser(id)),
     };
 };
 
