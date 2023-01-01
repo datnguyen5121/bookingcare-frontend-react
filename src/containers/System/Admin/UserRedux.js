@@ -54,7 +54,6 @@ class UserRedux extends Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.genderRedux !== this.props.genderRedux) {
             let arrGenders = this.props.genderRedux;
-            console.log("datdeptrai", arrGenders[0].keyMap);
             this.setState({
                 genderArr: arrGenders,
                 gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].keyMap : "",
@@ -100,7 +99,6 @@ class UserRedux extends Component {
         let file = data[0];
         if (file) {
             let base64 = await CommonUtils.getBase64(file);
-            console.log("dat base 64:", base64);
             let objectUrl = URL.createObjectURL(file);
             this.setState({
                 previewImgURL: objectUrl,
@@ -117,9 +115,9 @@ class UserRedux extends Component {
     handleSaveUser = () => {
         let isValid = this.checkValidateInput();
         if (isValid === false) return;
-
         let { action } = this.state;
         if (action === CRUD_ACTIONS.CREATE) {
+            console.log("check save create▬ state", this.state);
             //fire redux action
             this.props.createNewUser({
                 email: this.state.email,
@@ -136,6 +134,8 @@ class UserRedux extends Component {
         }
         if (action === CRUD_ACTIONS.EDIT) {
             //fire redux edit user
+            console.log("ấn nút lưu", this.state);
+
             this.props.editAUserRedux({
                 id: this.state.userEditId,
                 email: this.state.email,
@@ -169,9 +169,9 @@ class UserRedux extends Component {
         this.setState({
             ...copyState,
         });
-        console.log(copyState);
     };
     handleEditUserFromParent = (user) => {
+        console.log("log", user);
         let imageBase64 = "";
         if (user.image) {
             imageBase64 = new Buffer(user.image, "base64").toString("binary");
@@ -186,11 +186,12 @@ class UserRedux extends Component {
             gender: user.gender,
             position: user.positionId,
             role: user.roleId,
-            avatar: "",
+            avatar: imageBase64,
             previewImgURL: imageBase64,
             action: CRUD_ACTIONS.EDIT,
             userEditId: user.id,
         });
+        console.log(imageBase64);
     };
     render() {
         let genders = this.state.genderArr;
