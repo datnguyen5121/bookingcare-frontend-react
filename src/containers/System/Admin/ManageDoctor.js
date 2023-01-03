@@ -70,9 +70,7 @@ class ManageDoctor extends Component {
                             rows="4"
                             onChange={(event) => this.handleOnChangeDesc(event)}
                             value={this.state.description}
-                        >
-                            ádasdasdasdas
-                        </textarea>
+                        ></textarea>
                     </div>
                 </div>
                 <div className="manage-doctor-editor">
