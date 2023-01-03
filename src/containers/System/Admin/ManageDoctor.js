@@ -7,6 +7,7 @@ import MarkdownIt from "markdown-it";
 import MdEditor from "react-markdown-editor-lite";
 import "react-markdown-editor-lite/lib/index.css";
 import Select from "react-select";
+import { fetchAllDoctors } from "../../../store/actions";
 
 const options = [
     { value: "chocolate", label: "Chocolate" },
@@ -25,7 +26,9 @@ class ManageDoctor extends Component {
             description: "",
         };
     }
-    componentDidMount() {}
+    componentDidMount() {
+        this.props.fetchAllDoctors();
+    }
     componentDidUpdate(prevProps, prevState, snapshot) {}
 
     handleEditorChange = ({ html, text }) => {
@@ -99,8 +102,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
-        deleteAUserRedux: (id) => dispatch(actions.deleteAUser(id)),
+        fetchAllDoctors: (id) => dispatch(actions.fetchAllDoctors()),
     };
 };
 
