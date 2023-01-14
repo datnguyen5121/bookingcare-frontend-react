@@ -4,8 +4,8 @@ import HomeHeader from "../../HomePage/HomeHeader";
 import "./DetailDoctor.scss";
 import { getDetailInforDoctor } from "../../../services/userService";
 import { LANGUAGES } from "../../../utils";
-import DoctorSchedule from "../../System/Doctor/DoctorSchedule";
-import DoctorExtraInfor from "../../System/Doctor/DoctorExtraInfor";
+import DoctorSchedule from "./DoctorSchedule";
+import DoctorExtraInfor from "./DoctorExtraInfor";
 class DetailDoctor extends Component {
     constructor(props) {
         super(props);
@@ -31,7 +31,6 @@ class DetailDoctor extends Component {
     componentDidUpdate(prevProps, prevState, snapshot) {}
 
     render() {
-        console.log("hoi danit channel", this.state);
         let { language } = this.props;
         let { detailDoctor } = this.state;
         let nameVi = "",

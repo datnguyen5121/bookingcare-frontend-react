@@ -9,7 +9,6 @@ import { withRouter } from "react-router";
 class OutStandingDoctor extends Component {
     constructor(props) {
         super(props);
-        console.log("doctor", props);
         this.state = {
             arrDoctors: [],
         };
@@ -27,12 +26,10 @@ class OutStandingDoctor extends Component {
     handleViewDetailDoctor = (doctor) => {
         if (this.props.history) {
             this.props.history.push(`/detail-doctor/${doctor.id}`);
-            console.log("hoidanit channel view infor: ", doctor);
         }
     };
     render() {
         let arrDoctors = this.state.arrDoctors;
-        console.log(arrDoctors);
         let { language } = this.props;
         // arrDoctors = arrDoctors.concat(arrDoctors).concat(arrDoctors);
         return (
