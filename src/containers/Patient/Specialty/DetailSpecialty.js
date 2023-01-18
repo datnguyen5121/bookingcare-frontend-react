@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import "./DefaultClass.scss";
-
+import "./DetailSpecialty.scss";
+import HomeHeader from "../../HomePage/HomeHeader";
 import { FormattedMessage } from "react-intl";
 
-class DefaultClass extends Component {
+class DetailSpecialty extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -14,7 +14,12 @@ class DefaultClass extends Component {
     async componentDidUpdate(prevProps, prevState, snapshot) {}
 
     render() {
-        return <div></div>;
+        return (
+            <>
+                <HomeHeader />
+                <div>hello world from detail specialty</div>;
+            </>
+        );
     }
 }
 
@@ -28,4 +33,4 @@ const mapDispatchToProps = (dispatch) => {
     return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DefaultClass);
+export default connect(mapStateToProps, mapDispatchToProps)(DetailSpecialty);
